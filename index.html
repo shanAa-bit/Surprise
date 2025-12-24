@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merry Christmas My Love 🎄</title>
+
+<style>
+:root{
+  --red:#c1121f;
+  --green:#1b4332;
+  --gold:#ffd166;
+  --white:#fff;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background:linear-gradient(to bottom,#0b3d2e,#021c14);
+  color:var(--white);
+  overflow-x:hidden;
+}
+
+/* ===== SECTIONS ===== */
+section{
+  min-height:100vh;
+  display:none;
+  padding:40px 20px;
+}
+
+section.active{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+/* ===== TEXT ===== */
+h1{
+  color:var(--gold);
+  margin-bottom:20px;
+  text-shadow:0 0 15px rgba(255,209,102,0.6);
+}
+
+p{
+  max-width:900px;
+  font-size:1.15rem;
+  line-height:1.8;
+  margin-bottom:30px;
+}
+
+/* ===== BUTTONS ===== */
+button{
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,var(--red),#ff4d6d);
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  box-shadow:0 0 20px rgba(255,77,109,0.7);
+  margin-top:15px;
+}
+
+/* ===== INPUT ===== */
+input{
+  padding:12px;
+  border-radius:20px;
+  border:none;
+  text-align:center;
+  margin-bottom:15px;
+}
+
+/* ===== LETTER ===== */
+.letter{
+  background:rgba(255,255,255,0.1);
+  padding:25px;
+  border-radius:20px;
+  max-width:900px;
+}
+
+/* ===== SURPRISE MESSAGE ===== */
+.message{
+  display:none;
+  margin-top:15px;
+  color:#ffd6e0;
+}
+
+/* ===== PHOTOS ===== */
+.photos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:20px;
+  max-width:1000px;
+}
+
+/* ===== SNOW ===== */
+.snowflake{
+  position:fixed;
+  top:-10px;
+  color:white;
+  pointer-events:none;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* ===== HEARTS ===== */
+.heart{
+  position:fixed;
+  color:#ff4d6d;
+  pointer-events:none;
+  animation:floatUp 1.5s ease-out forwards;
+}
+
+@keyframes floatUp{
+  to{transform:translateY(-80px);opacity:0;}
+}
+</style>
+</head>
+
+<body onclick="spawnHeart(event)">
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🔐 PASSWORD PAGE -->
+<section class="active">
+  <h1>🔐 For My Baby ❤️</h1>
+  <p>Enter the name you call me 🫶</p>
+  <input id="pass" placeholder="Hint: nickname 😉">
+  <button onclick="checkPass()">Unlock 💖</button>
+</section>
+
+<!-- 🎄 HEY MY BABY -->
+<section>
+  <h1>🎄 Hey My Baby ❤️</h1>
+  <p class="type" data-text="I couldn’t be there with you this Christmas, so I turned my love into something magical ✨">
+  </p>
+  <button onclick="nextSection()">Start the Magic ✨</button>
+</section>
+
+<!-- ❄️ WINTER STORY -->
+<section>
+  <h1>❄️ A Winter Story</h1>
+  <p class="type" data-text="Once upon a winter night,  
+    every snowflake whispered your name, My Love."></p>
+  <button onclick="nextSection()">Next ➡️</button>
+</section>
+
+<!-- 💖 FROM MY HEART -->
+<section>
+  <h1>💖 From My Heart</h1>
+  <p class="type" data-text="My Baby, you are my warmth in every cold night  
+    and my smile in every silent moment.">
+  </p>
+  <button onclick="nextSection()">Next 💫</button>
+</section>
+
+<!-- 📜 LONG LETTER -->
+<section>
+  <h1>📜 A Letter for You</h1>
+  <div class="letter">
+    <p class="type" data-text="My Love…  
+     I am not the grandest of lovers, not the greatest lover but surely the LOVER of the GREATEST!! YOU my baby.
+     This Christmas marking the official start of events and the peak of winters I want to say to You is that through every night, every wind I feel my longings for You reach even new heights. 
+      Love, a simple word with four letters but YOU My Baby made it so special that Your Love it's the most amazing and fullest feeling in this World, getting You and how beautifully Your Love has made Happier and the Happiest Forever. I am not good at expressing myself, but You taught Me this and showed Me how incredible it is, It Feels Magic, but the Feeling is Real and it's the Realistically the most wonderful magic.
+      I am Caught in Yours Spells and and never want to lose free from these and I'll tightly hold onto it and fall even more. Promise to Keep You the Happiest My Love, I LOVE YOU THE MOST MY Cherry Red Rose
+      Every word comes straight from my heart.❤️">
+    </p>
+  </div>
+  <button onclick="nextSection()">Next ❤️</button>
+</section>
+
+<!-- 🎁 LITTLE SURPRISES -->
+<section>
+  <h1>🎁 Little Surprises</h1>
+
+  <button onclick="reveal(0)">Tap if you miss me 🥺</button>
+  <div class="message">I miss you more than every snowflake in this World ❄️❤️ and I am in Your Heart Forever</div>
+
+  <button onclick="reveal(1)">Tap for a secret 💌</button>
+  <div class="message">You are my forever favourite person 💖</div>
+
+  <button onclick="reveal(2)">Christmas Wish 🎄</button>
+  <div class="message">All I ever want is YOU, My Baby ✨</div>
+
+  <button onclick="nextSection()">Next ➡️</button>
+</section>
+
+<!-- 📸 PHOTOS -->
+<section>
+  <h1>📸 Our Memories</h1>
+  <div class="photos">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+    <img src="photo4.jpg">
+  </div>
+  <button onclick="nextSection()">One Last Thing… 👀❤️</button>
+</section>
+
+<!-- 💎 SECRET PAGE -->
+<section>
+  <h1>💎 Just Between Us</h1>
+  <p class="type" data-text="I don’t say this often…  
+    but with you, I feel safe.
+    Completely. Truly. Always.">
+  </p>
+</section>
+
+<script>
+let index=0;
+const sections=document.querySelectorAll("section");
+const music=document.getElementById("bgMusic");
+
+/* PASSWORD */
+function checkPass(){
+  const p=document.getElementById("pass").value.toLowerCase();
+  if(p==="baby"){
+    nextSection();
+    music.play().catch(()=>{});
+  } else {
+    alert("Wrong 😛 Try again My Love");
+  }
+}
+
+/* NEXT PAGE */
+function nextSection(){
+  sections[index].classList.remove("active");
+  index++;
+  sections[index].classList.add("active");
+  startTyping();
+}
+
+/* TYPE EFFECT */
+function startTyping(){
+  const el = sections[index].querySelector(".type");
+  if(!el) return;
+
+  const text = el.getAttribute("data-text");
+  el.textContent = "";
+  let i = 0;
+
+  const interval = setInterval(() => {
+    el.textContent += text[i];
+    i++;
+    if (i >= text.length) clearInterval(interval);
+  }, 40);
+}
+/* REVEAL */
+function reveal(i){
+  const msgs=document.querySelectorAll(".message");
+  if(msgs[i]) msgs[i].style.display="block";
+}
+
+/* HEARTS */
+function spawnHeart(e){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=e.clientX+"px";
+  h.style.top=e.clientY+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),1500);
+}
+
+/* SNOW */
+const flakes=["❄","❅","❆"];
+for(let i=0;i<45;i++){
+  const s=document.createElement("div");
+  s.className="snowflake";
+  s.textContent=flakes[Math.floor(Math.random()*flakes.length)];
+  s.style.left=Math.random()*100+"vw";
+  s.style.fontSize=Math.random()*14+12+"px";
+  s.style.animationDuration=Math.random()*10+8+"s";
+  document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
